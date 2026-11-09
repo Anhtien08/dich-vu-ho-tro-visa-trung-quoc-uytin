@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Send, CheckCircle2, Shield, Loader2, Sparkles, Search } from 'lucide-react';
+import { Send, CheckCircle2, Loader2, Sparkles } from 'lucide-react';
 import { ApplicationRecord } from '../types/visa';
+import { trackFormSuccess } from '../utils/analytics';
 
 interface ConsultationFormProps {
   initialVisaType?: string;
@@ -35,8 +36,8 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
       setVisaType(appliedDetails.visaType);
       setNotes((prev) =>
         prev
-          ? `${prev}\n[Cấu hình dự toán: ${appliedDetails.entry}, tốc độ: ${appliedDetails.speed}]`
-          : `[Cấu hình dự toán: ${appliedDetails.entry}, tốc độ: ${appliedDetails.speed}]`
+          ? `${prev}\n[Cấu hình tham khảo: ${appliedDetails.entry}, thời gian: ${appliedDetails.speed}]`
+          : `[Cấu hình tham khảo: ${appliedDetails.entry}, thời gian: ${appliedDetails.speed}]`
       );
     }
   }, [appliedDetails]);
@@ -53,16 +54,23 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
         fullName,
         phone,
         visaType,
-        departureDate: departureDate || 'Dự kiến trong tháng tới',
+        departureDate: departureDate || 'Dự kiến trong thời gian tới',
         submissionDate: new Date().toLocaleDateString('vi-VN'),
         status: 'Tiếp nhận yêu cầu',
         stepIndex: 1,
-        notes: notes || 'Yêu cầu tư vấn hồ sơ thị thực Trung Quốc trọn gói.',
+        notes: notes || 'Yêu cầu tư vấn thông tin và hướng dẫn hồ sơ visa Trung Quốc.',
       };
 
       setSubmittedRecord(newRecord);
       setIsSubmitting(false);
-    }, 700);
+
+      // Trigger Google Ads conversion ONLY upon successful form submission
+      trackFormSuccess({
+        fullName,
+        phone,
+        visaType,
+      });
+    }, 600);
   };
 
   const handleReset = () => {
@@ -83,10 +91,10 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
               <Sparkles className="w-6 h-6" />
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#001f41] tracking-tight">
-              NHẬN TƯ VẤN HỒ SƠ THỊ THỰC TRUNG QUỐC MIỄN PHÍ
+              NHẬN THÔNG TIN TƯ VẤN VISA TRUNG QUỐC
             </h2>
-            <p className="text-xs sm:text-sm text-[#43474f] max-w-lg">
-              Để lại thông tin, đội ngũ chuyên viên của Visa5S sẽ liên hệ tư vấn lộ trình và hướng dẫn hồ sơ theo nhu cầu cụ thể của bạn.
+            <p className="text-xs sm:text-sm text-[#43474f] max-w-lg leading-relaxed">
+              Để lại thông tin liên hệ, nhân viên Visa5S sẽ trao đổi về nhu cầu và cung cấp thông tin dịch vụ tư vấn phù hợp.
             </p>
           </div>
 
@@ -99,24 +107,24 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
               <div>
                 <h3 className="text-lg font-bold text-[#001f41]">Đăng Ký Tư Vấn Thành Công!</h3>
                 <p className="text-xs text-[#43474f] mt-1.5 max-w-md mx-auto leading-relaxed">
-                  Cảm ơn <strong>{submittedRecord.fullName}</strong>. Thông tin hồ sơ của bạn đã được ghi nhận và chuyển tiếp đến bộ phận thẩm định qua email: <span className="font-bold text-[#0051d5]">Visa5giay@gmail.com</span>. Chuyên viên Visa5S sẽ liên hệ qua số <strong>{submittedRecord.phone}</strong> trong vòng 15-30 phút làm việc.
+                  Cảm ơn <strong>{submittedRecord.fullName}</strong>. Thông tin của bạn đã được tiếp nhận và chuyển tiếp qua hộp thư: <span className="font-bold text-[#0051d5]">Visa5giay@gmail.com</span>. Nhân viên Visa5S sẽ liên hệ qua số <strong>{submittedRecord.phone}</strong> để trao đổi nhu cầu và tư vấn chi tiết.
                 </p>
               </div>
 
               {/* Email dispatch action */}
               <div className="p-3.5 rounded-xl bg-white border border-[#eaedff] max-w-md mx-auto w-full text-left space-y-2">
                 <div className="flex items-center justify-between text-[11px] text-slate-500">
-                  <span className="font-semibold text-[#001f41]">Email tiếp nhận hồ sơ:</span>
+                  <span className="font-semibold text-[#001f41]">Email tiếp nhận thông tin:</span>
                   <span className="font-mono font-bold text-[#0051d5]">Visa5giay@gmail.com</span>
                 </div>
                 <p className="text-[11px] text-slate-500 leading-normal">
-                  Bạn có thể gửi kèm bản scan hộ chiếu hoặc tài liệu chứng minh chuyến đi trực tiếp tới hộp thư của chúng tôi.
+                  Bạn cũng có thể gửi trước các câu hỏi hoặc thông tin chuyến đi trực tiếp tới hộp thư của chúng tôi.
                 </p>
                 <a
-                  href={`mailto:Visa5giay@gmail.com?subject=${encodeURIComponent(`[Hồ sơ Thị thực Trung Quốc] ${submittedRecord.fullName} - ${submittedRecord.phone}`)}&body=${encodeURIComponent(`Kính gửi chuyên viên Visa5S,\n\nTôi vừa đăng ký tư vấn hồ sơ thị thực Trung Quốc:\n- Họ và tên: ${submittedRecord.fullName}\n- Số điện thoại: ${submittedRecord.phone}\n- Diện thị thực: ${submittedRecord.visaType}\n- Ngày khởi hành dự kiến: ${submittedRecord.departureDate || 'Chưa xác định'}\n\nTôi gửi kèm tài liệu hồ sơ của mình để nhờ thẩm định trước.\nXin cảm ơn!`)}`}
+                  href={`mailto:Visa5giay@gmail.com?subject=${encodeURIComponent(`[Yêu cầu tư vấn Visa Trung Quốc] ${submittedRecord.fullName} - ${submittedRecord.phone}`)}&body=${encodeURIComponent(`Kính gửi nhân viên tư vấn Visa5S,\n\nTôi vừa đăng ký nhận thông tin tư vấn hồ sơ visa Trung Quốc:\n- Họ và tên: ${submittedRecord.fullName}\n- Số điện thoại: ${submittedRecord.phone}\n- Loại visa muốn tìm hiểu: ${submittedRecord.visaType}\n- Ngày khởi hành dự kiến: ${submittedRecord.departureDate || 'Chưa xác định'}\n\nXin vui lòng liên hệ tư vấn sớm nhất.\nXin cảm ơn!`)}`}
                   className="w-full py-2 px-3 rounded-lg bg-[#eaedff] hover:bg-[#d5e3ff] text-[#001f41] text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"
                 >
-                  <span>Mở Email gửi tài liệu tới Visa5giay@gmail.com</span>
+                  <span>Mở Email gửi thông tin tới Visa5giay@gmail.com</span>
                 </a>
               </div>
 
@@ -167,10 +175,10 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {/* Diện thị thực */}
+                {/* Loại visa muốn tìm hiểu */}
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="form-visatype" className="text-xs font-bold text-[#001f41]">
-                    Diện thị thực cần tư vấn <span className="text-[#ba1a1a]">*</span>
+                    Loại visa muốn tìm hiểu <span className="text-[#ba1a1a]">*</span>
                   </label>
                   <select
                     id="form-visatype"
@@ -178,18 +186,18 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
                     onChange={(e) => setVisaType(e.target.value)}
                     className="h-11 px-3 rounded-xl bg-[#f8fafc] border border-slate-200 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#0051d5] focus:bg-white transition-colors"
                   >
-                    <option value="Du lịch">Thị thực du lịch (L)</option>
-                    <option value="Công tác">Thị thực công tác / Thương mại (M)</option>
-                    <option value="Thăm thân">Thị thực thăm thân (Q1 / Q2)</option>
-                    <option value="Du học">Thị thực học tập (X)</option>
+                    <option value="Du lịch">Visa du lịch (L)</option>
+                    <option value="Công tác">Visa thương mại (M)</option>
+                    <option value="Thăm thân">Visa thăm thân (Q1/Q2)</option>
+                    <option value="Du học">Visa học tập (X1/X2)</option>
                     <option value="Chưa xác định">Chưa xác định / Cần tư vấn thêm</option>
                   </select>
                 </div>
 
-                {/* Khu vực nộp */}
+                {/* Khu vực liên hệ */}
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="form-city" className="text-xs font-bold text-[#001f41]">
-                    Khu vực thuận tiện nộp hồ sơ
+                    Khu vực liên hệ thuận tiện
                   </label>
                   <select
                     id="form-city"
@@ -197,10 +205,10 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
                     onChange={(e) => setCity(e.target.value)}
                     className="h-11 px-3 rounded-xl bg-[#f8fafc] border border-slate-200 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#0051d5] focus:bg-white transition-colors"
                   >
-                    <option value="TP. Hồ Chí Minh">Trung tâm CVASC TP. Hồ Chí Minh</option>
-                    <option value="Hà Nội">Trung tâm CVASC Hà Nội</option>
-                    <option value="Đà Nẵng">Trung tâm CVASC Đà Nẵng</option>
-                    <option value="Online">Tư vấn từ xa / Gửi hồ sơ bưu điện</option>
+                    <option value="TP. Hồ Chí Minh">Khu vực TP. Hồ Chí Minh (Trụ sở Q.10)</option>
+                    <option value="Bình Dương">Khu vực Dĩ An / TP. Thủ Đức</option>
+                    <option value="Hà Nội">Khu vực Hà Nội (Chi nhánh Thanh Xuân)</option>
+                    <option value="Online">Tư vấn trực tuyến / Toàn quốc</option>
                   </select>
                 </div>
               </div>
@@ -220,7 +228,7 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
                   />
                 </div>
 
-                {/* Tình trạng hộ chiếu */}
+                {/* Tình trạng lịch sử xuất cảnh */}
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="form-passport" className="text-xs font-bold text-[#001f41]">
                     Tình trạng lịch sử xuất cảnh
@@ -233,27 +241,27 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
                   >
                     <option value="da-di-cac-nuoc">Đã từng đi một số nước (Thái, Sing, Hàn, Nhật...)</option>
                     <option value="trang">Hộ chiếu trắng (chưa từng đi nước ngoài)</option>
-                    <option value="da-di-trung-quoc">Đã từng có thị thực Trung Quốc trước đây</option>
+                    <option value="da-di-trung-quoc">Đã từng có visa Trung Quốc trước đây</option>
                   </select>
                 </div>
               </div>
 
-              {/* Ghi chú thêm */}
+              {/* Nội dung cần hỗ trợ */}
               <div className="flex flex-col gap-1.5">
                 <label htmlFor="form-notes" className="text-xs font-bold text-[#001f41]">
-                  Nội dung cần hỗ trợ thêm
+                  Nội dung cần hỗ trợ
                 </label>
                 <textarea
                   id="form-notes"
                   rows={3}
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  placeholder="Chia sẻ thêm về lịch trình, tình trạng công việc hoặc những câu hỏi bạn đang băn khoăn..."
+                  placeholder="Chia sẻ thêm về mục đích chuyến đi, công việc hoặc những câu hỏi bạn muốn được giải đáp..."
                   className="p-3.5 rounded-xl bg-[#f8fafc] border border-slate-200 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#0051d5] focus:bg-white transition-colors resize-none"
                 ></textarea>
               </div>
 
-              {/* Đồng ý điều khoản */}
+              {/* Checkbox đồng ý điều khoản chính sách bảo mật */}
               <div className="flex items-start gap-2.5 pt-1">
                 <input
                   id="form-agree"
@@ -264,7 +272,7 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
                   className="mt-0.5 w-4 h-4 rounded text-[#0051d5] accent-[#0051d5]"
                 />
                 <label htmlFor="form-agree" className="text-[11px] sm:text-xs text-[#43474f] leading-normal select-none">
-                  Tôi đồng ý với chính sách bảo mật thông tin của Visa5S. Cam kết bảo mật hồ sơ cá nhân và không chia sẻ cho bên thứ ba.
+                  Tôi đồng ý với chính sách bảo mật thông tin của Visa5S. Cam kết bảo mật thông tin cá nhân và không chia sẻ cho bên thứ ba.
                 </label>
               </div>
 
@@ -282,7 +290,7 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
                 ) : (
                   <>
                     <Send className="w-4 h-4" />
-                    <span>Đăng Ký Tư Vấn Ngay</span>
+                    <span>Gửi Thông Tin Tư Vấn</span>
                   </>
                 )}
               </button>

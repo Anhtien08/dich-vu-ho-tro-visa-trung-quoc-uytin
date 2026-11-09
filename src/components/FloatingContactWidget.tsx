@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, MessageCircle, Mail, X, Send, Sparkles, CheckCircle2 } from 'lucide-react';
+import { trackPhoneCall, trackZaloClick, trackFormSuccess } from '../utils/analytics';
 
 interface FloatingContactWidgetProps {
   onOpenConsultationForm: () => void;
@@ -18,21 +19,14 @@ export const FloatingContactWidget: React.FC<FloatingContactWidgetProps> = ({
     e.preventDefault();
     if (!quickPhone) return;
 
-    // Construct email content for Visa5giay@gmail.com
-    const subject = encodeURIComponent(`[Đăng ký tư vấn Thị thực Trung Quốc] ${quickName || 'Khách hàng'} - ${quickPhone}`);
-    const body = encodeURIComponent(
-      `Chào Visa5S,\n\nTôi muốn đăng ký tư vấn hồ sơ thị thực Trung Quốc:\n- Họ và tên: ${quickName || 'Chưa cung cấp'}\n- Số điện thoại / Zalo: ${quickPhone}\n- Diện thị thực quan tâm: ${quickVisa}\n\nXin vui lòng liên hệ tư vấn sớm nhất.\nEmail người nhận: Visa5giay@gmail.com`
-    );
-
-    // Also trigger mailto in background if user prefers
-    const mailtoUrl = `mailto:Visa5giay@gmail.com?subject=${subject}&body=${body}`;
+    // Trigger Google Ads conversion ONLY upon successful submission
+    trackFormSuccess({
+      fullName: quickName,
+      phone: quickPhone,
+      visaType: quickVisa,
+    });
 
     setIsSent(true);
-
-    // Optionally open mailto after small timeout or let user choose
-    setTimeout(() => {
-      // Keep popup open showing success
-    }, 400);
   };
 
   return (
@@ -47,8 +41,8 @@ export const FloatingContactWidget: React.FC<FloatingContactWidgetProps> = ({
                 <Sparkles className="w-4 h-4" />
               </div>
               <div>
-                <h4 className="text-sm font-bold leading-tight">Liên Hệ Visa5S</h4>
-                <span className="text-[11px] text-[#a9c8fc]">Hỗ trợ hồ sơ Trung Quốc 24/7</span>
+                <h4 className="text-sm font-bold leading-tight">Tư Vấn Thông Tin Visa5S</h4>
+                <span className="text-[11px] text-[#a9c8fc]">Hỗ trợ thông tin theo nhu cầu</span>
               </div>
             </div>
             <button
@@ -67,6 +61,7 @@ export const FloatingContactWidget: React.FC<FloatingContactWidgetProps> = ({
             <div className="grid grid-cols-2 gap-2">
               <a
                 href="tel:0911909686"
+                onClick={() => trackPhoneCall('0911909686')}
                 className="p-2.5 rounded-xl bg-[#eaedff] hover:bg-[#d5e3ff] flex items-center gap-2 text-[#001f41] transition-colors"
               >
                 <div className="w-7 h-7 rounded-lg bg-[#0051d5] text-white flex items-center justify-center shrink-0">
@@ -82,6 +77,7 @@ export const FloatingContactWidget: React.FC<FloatingContactWidgetProps> = ({
                 href="https://zalo.me/0911909686"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={trackZaloClick}
                 className="p-2.5 rounded-xl bg-[#eaedff] hover:bg-[#d5e3ff] flex items-center gap-2 text-[#001f41] transition-colors"
               >
                 <div className="w-7 h-7 rounded-lg bg-[#0051d5] text-white flex items-center justify-center shrink-0">
@@ -96,7 +92,7 @@ export const FloatingContactWidget: React.FC<FloatingContactWidgetProps> = ({
 
             {/* Direct Email link to Visa5giay@gmail.com */}
             <a
-              href="mailto:Visa5giay@gmail.com?subject=Tư vấn hồ sơ Thị thực Trung Quốc&body=Kính gửi Visa5S, tôi cần tư vấn về thủ tục chuẩn bị hồ sơ thị thực Trung Quốc:"
+              href="mailto:Visa5giay@gmail.com?subject=Tư vấn thông tin Visa Trung Quốc&body=Kính gửi nhân viên tư vấn Visa5S, tôi muốn được giải đáp thắc mắc về hồ sơ visa Trung Quốc:"
               className="p-2.5 rounded-xl bg-[#f2f3ff] hover:bg-[#eaedff] flex items-center justify-between text-xs font-semibold text-[#001f41] transition-colors border border-[#eaedff]"
             >
               <div className="flex items-center gap-2">
@@ -109,7 +105,7 @@ export const FloatingContactWidget: React.FC<FloatingContactWidgetProps> = ({
             {/* Quick Consultation Mini Form */}
             <div className="pt-2 border-t border-slate-100">
               <span className="text-xs font-bold text-[#001f41] block mb-2">
-                Để lại số điện thoại nhận gọi lại:
+                Để lại số điện thoại nhận trao đổi thông tin:
               </span>
 
               {isSent ? (
@@ -117,7 +113,7 @@ export const FloatingContactWidget: React.FC<FloatingContactWidgetProps> = ({
                   <CheckCircle2 className="w-5 h-5 text-emerald-600 mx-auto" />
                   <p className="text-xs font-bold text-emerald-800">Đã gửi yêu cầu thành công!</p>
                   <p className="text-[11px] text-emerald-700 leading-snug">
-                    Thông tin đã chuyển tiếp đến chuyên viên qua <strong>Visa5giay@gmail.com</strong>.
+                    Nhân viên Visa5S sẽ liên hệ trao đổi nhu cầu qua <strong>Visa5giay@gmail.com</strong> và số điện thoại của bạn.
                   </p>
                   <button
                     onClick={() => {
@@ -152,10 +148,10 @@ export const FloatingContactWidget: React.FC<FloatingContactWidgetProps> = ({
                     onChange={(e) => setQuickVisa(e.target.value)}
                     className="w-full h-9 px-2.5 text-xs rounded-lg bg-slate-50 border border-slate-200 focus:outline-none focus:border-[#0051d5] focus:bg-white text-slate-700"
                   >
-                    <option value="Du lịch">Thị Thực Du Lịch (L)</option>
-                    <option value="Công tác">Thị Thực Thương Mại / Công Tác (M)</option>
-                    <option value="Thăm thân">Thị Thực Thăm Thân (Q1/Q2)</option>
-                    <option value="Du học">Thị Thực Học Tập (X)</option>
+                    <option value="Du lịch">Visa du lịch (L)</option>
+                    <option value="Công tác">Visa thương mại (M)</option>
+                    <option value="Thăm thân">Visa thăm thân (Q1/Q2)</option>
+                    <option value="Du học">Visa học tập (X1/X2)</option>
                   </select>
 
                   <button
@@ -163,7 +159,7 @@ export const FloatingContactWidget: React.FC<FloatingContactWidgetProps> = ({
                     className="w-full h-9 rounded-lg bg-[#0051d5] hover:bg-[#003ea8] text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-colors shadow-sm"
                   >
                     <Send className="w-3.5 h-3.5" />
-                    <span>Gửi tư vấn đến Visa5giay@gmail.com</span>
+                    <span>Gửi yêu cầu trao đổi thông tin</span>
                   </button>
                 </form>
               )}

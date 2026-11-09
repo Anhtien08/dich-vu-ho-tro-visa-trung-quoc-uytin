@@ -3,145 +3,145 @@ import { VisaTypeInfo, ChecklistItem, FaqItem, OfficeLocation } from '../types/v
 export const VISA_TYPES: VisaTypeInfo[] = [
   {
     code: 'L',
-    name: 'Thị Thực Du Lịch Trung Quốc',
+    name: 'Visa Du Lịch (L)',
     category: 'Du lịch',
-    badge: 'Phổ biến nhất',
+    badge: 'Du lịch tự túc / Tour',
     popular: true,
-    description: 'Dành cho người có nhu cầu du lịch, tham quan danh lam thắng cảnh hoặc khám phá văn hóa các tỉnh thành Trung Quốc.',
-    validity: '3 tháng (1 lần hoặc 2 lần nhập cảnh)',
-    durationOfStay: '15 - 30 ngày/lần',
-    entries: '1 lần hoặc 2 lần',
-    targetAudience: 'Cá nhân, gia đình, nhóm bạn du lịch tự túc hoặc theo đoàn.',
-    keyRequirement: 'Lịch trình chi tiết, xác nhận vé máy bay, đặt phòng khách sạn.'
+    description: 'Tư vấn thông tin và hướng dẫn chuẩn bị hồ sơ cho khách hàng có nhu cầu tham quan, du lịch hoặc khám phá văn hóa tại Trung Quốc.',
+    validity: 'Thời hạn theo thông báo của cơ quan thẩm quyền (thường 3 tháng)',
+    durationOfStay: 'Thời gian lưu trú theo quyết định cấp của cơ quan thẩm quyền',
+    entries: '1 lần hoặc 2 lần tùy kết quả xét duyệt',
+    targetAudience: 'Cá nhân, gia đình, nhóm bạn có kế hoạch du lịch tại Trung Quốc.',
+    keyRequirement: 'Kế hoạch chuyến đi, xác nhận đặt vé, phòng nghỉ và giấy tờ cá nhân tham khảo.'
   },
   {
     code: 'M',
-    name: 'Thị Thực Thương Mại / Công Tác',
+    name: 'Visa Thương Mại (M)',
     category: 'Công tác',
-    badge: 'Doanh nghiệp',
+    badge: 'Khảo sát / Đối tác',
     popular: true,
-    description: 'Hỗ trợ tìm hiểu thủ tục dành cho chuyến đi phục vụ hoạt động thương mại, khảo sát thị trường, ký kết hợp đồng hoặc dự hội chợ triển lãm (như Canton Fair).',
-    validity: '3 tháng, 6 tháng hoặc 1 năm',
-    durationOfStay: '30 - 90 ngày/lần',
-    entries: '1 lần, 2 lần hoặc nhiều lần',
-    targetAudience: 'Chủ doanh nghiệp, cán bộ nhân viên được cử đi công tác, thương nhân xúc tiến thương mại.',
-    keyRequirement: 'Thư mời từ đối tác bên Trung Quốc & Quyết định cử công tác từ công ty Việt Nam.'
+    description: 'Tư vấn thông tin và hỗ trợ chuẩn bị hồ sơ cho mục đích khảo sát thị trường, làm việc với đối tác, ký kết hợp đồng hoặc tham dự hội chợ triển lãm.',
+    validity: 'Thời hạn theo quy định của cơ quan thẩm quyền (3 tháng, 6 tháng hoặc 1 năm)',
+    durationOfStay: 'Thời gian lưu trú theo quyết định xét duyệt',
+    entries: '1 lần, 2 lần hoặc nhiều lần tùy hồ sơ',
+    targetAudience: 'Thương nhân, đại diện doanh nghiệp, cán bộ nhân viên được cử đi công tác.',
+    keyRequirement: 'Thư mời thương mại từ đối tác và giấy tờ cử công tác theo hướng dẫn tham khảo.'
   },
   {
     code: 'Q',
-    name: 'Thị Thực Thăm Thân (Q1 / Q2)',
+    name: 'Visa Thăm Thân (Q1/Q2)',
     category: 'Thăm thân',
-    badge: 'Gia đình',
+    badge: 'Thăm gia đình',
     popular: false,
-    description: 'Tư vấn hồ sơ theo diện thăm thân nhân là công dân Trung Quốc hoặc người nước ngoài có thẻ thường trú tại Trung Quốc.',
-    validity: 'Q1: Cần đổi thẻ cư trú trong 30 ngày; Q2: Ngắn hạn dưới 180 ngày',
-    durationOfStay: 'Q2: Tối đa 180 ngày; Q1: Dài hạn trên 180 ngày',
-    entries: '1 lần, 2 lần hoặc nhiều lần',
-    targetAudience: 'Vợ/chồng, cha mẹ, con cái, anh chị em ruột của người cư trú tại Trung Quốc.',
-    keyRequirement: 'Giấy tờ chứng minh quan hệ ruột thịt (khai sinh, kết hôn) & Thư mời người bảo lãnh.'
+    description: 'Cung cấp thông tin và hướng dẫn giấy tờ cho đương đơn có nhu cầu thăm người thân đang cư trú hợp pháp tại Trung Quốc.',
+    validity: 'Q1 (dài hạn) hoặc Q2 (ngắn hạn) theo quy định của cơ quan thẩm quyền',
+    durationOfStay: 'Tùy theo diện và phê duyệt của cơ quan có thẩm quyền',
+    entries: 'Theo quyết định của cơ quan lãnh sự',
+    targetAudience: 'Người thân của công dân Trung Quốc hoặc người nước ngoài có thẻ thường trú tại Trung Quốc.',
+    keyRequirement: 'Giấy tờ chứng minh quan hệ nhân thân và thư mời thăm thân theo quy định.'
   },
   {
     code: 'X',
-    name: 'Thị Thực Học Tập (X1 / X2)',
+    name: 'Visa Học Tập (X1/X2)',
     category: 'Du học',
-    badge: 'Học tập',
+    badge: 'Khóa học / Đào tạo',
     popular: false,
-    description: 'Hỗ trợ tìm hiểu thủ tục dành cho cá nhân có kế hoạch theo học ngắn hạn (X2) hoặc dài hạn (X1) tại các trường Đại học, Cao đẳng ở Trung Quốc.',
-    validity: 'X1: Cần đổi giấy phép cư trú trong 30 ngày; X2: Tối đa 180 ngày',
-    durationOfStay: 'Theo khóa học / thư mời đào tạo',
-    entries: '1 lần (X1) hoặc nhiều lần tùy diện',
-    targetAudience: 'Học sinh, sinh viên, nghiên cứu sinh nhận học bổng hoặc tự túc.',
-    keyRequirement: 'Giấy báo nhập học gốc & Mẫu đơn JW201 hoặc JW202 có dấu xác nhận.'
+    description: 'Tư vấn và hướng dẫn chuẩn bị hồ sơ cho học sinh, sinh viên, nghiên cứu sinh theo học các khóa ngắn hạn (X2) hoặc dài hạn (X1) tại Trung Quốc.',
+    validity: 'Theo thời gian khóa đào tạo được ghi trên giấy báo nhập học',
+    durationOfStay: 'Theo quyết định của cơ quan thẩm quyền và thời lượng khóa học',
+    entries: 'Theo quy định của cơ quan cấp thị thực',
+    targetAudience: 'Học sinh, sinh viên, học viên tham gia các chương trình đào tạo tại Trung Quốc.',
+    keyRequirement: 'Giấy báo trúng tuyển/nhập học và mẫu đơn tương ứng theo hướng dẫn của trường và cơ quan thẩm quyền.'
   }
 ];
 
 export const CHECKLIST_ITEMS: ChecklistItem[] = [
-  // 01. Giấy tờ cá nhân
+  // 01. Thông tin cá nhân
   {
     id: 'c1',
     category: 'personal',
-    title: 'Hộ chiếu gốc còn giá trị trên 6 tháng',
-    description: 'Hộ chiếu còn hạn ít nhất 6 tháng tính từ ngày dự kiến xuất cảnh khỏi Trung Quốc và còn tối thiểu 2 trang trắng liền kề.',
+    title: 'Hộ chiếu còn hạn sử dụng',
+    description: 'Hộ chiếu gốc còn hạn trên 6 tháng tính từ ngày dự kiến kết thúc chuyến đi và còn trang trống theo quy định.',
     required: true,
-    notes: 'Kèm theo các hộ chiếu cũ đã từng có tem thị thực các nước phát triển (nếu có).'
+    notes: 'Kèm theo hộ chiếu cũ nếu có lịch sử xuất nhập cảnh trước đây.'
   },
   {
     id: 'c2',
     category: 'personal',
-    title: 'Ảnh thẻ chuẩn quốc tế (33mm x 48mm)',
-    description: 'Ảnh chân dung mới chụp trong 6 tháng gần nhất, phông nền trắng trơn, không đeo kính râm, rõ vành tai và ngũ quan, không mặc áo trắng.',
+    title: 'Ảnh chân dung theo quy chuẩn',
+    description: 'Ảnh chụp chân dung gần nhất (phông trắng, rõ khuôn mặt, không đeo kính râm, kích thước theo quy chuẩn của cơ quan thẩm quyền).',
     required: true,
-    notes: 'Visa5S hỗ trợ chụp ảnh đúng quy chuẩn kích thước sứ quán khi khách tới văn phòng.'
+    notes: 'Visa5S hỗ trợ hướng dẫn thông số ảnh đạt chuẩn quy định.'
   },
   {
     id: 'c3',
     category: 'personal',
-    title: 'Căn cước công dân & Giấy xác nhận thông tin cư trú (CT07)',
-    description: 'Bản sao y công chứng hoặc trích lục dữ liệu cư trú CCCD còn hiệu lực.',
+    title: 'Giấy tờ tùy thân cá nhân',
+    description: 'Bản sao giấy tờ tùy thân (CCCD/thông tin cư trú) theo hướng dẫn thủ tục hiện hành.',
     required: true
   },
-  // 02. Hồ sơ chuyến đi
+  // 02. Thông tin chuyến đi
   {
     id: 'c4',
     category: 'trip',
-    title: 'Lịch trình di chuyển chi tiết từng ngày',
-    description: 'Kế hoạch hành trình rõ ràng: ngày nào ở thành phố nào (Bắc Kinh, Thượng Hải, Quảng Châu...), tham quan địa điểm nào.',
+    title: 'Dự kiến kế hoạch hành trình',
+    description: 'Bản thông tin dự kiến về lộ trình di chuyển, các địa điểm dự kiến ghé thăm phù hợp mục đích chuyến đi.',
     required: true,
-    notes: 'Visa5S hỗ trợ soạn thảo và chuẩn hóa lịch trình logic theo ngày bay.'
+    notes: 'Visa5S hỗ trợ khách hàng tổng hợp kế hoạch hành trình rõ ràng, logic.'
   },
   {
     id: 'c5',
     category: 'trip',
-    title: 'Xác nhận đặt vé máy bay khứ hồi (Flight Reservation)',
-    description: 'Mã đặt chỗ vé máy bay khứ hồi đúng tên người nộp hồ sơ và khớp với ngày trên lịch trình.',
+    title: 'Thông tin đặt chỗ vé máy bay (dự kiến)',
+    description: 'Xác nhận mã giữ chỗ vé máy bay khứ hồi khớp với thời gian dự kiến của kế hoạch chuyến đi.',
     required: true,
-    notes: 'Không cần xuất vé thanh toán trước; chỉ cần bản giữ chỗ hợp lệ.'
+    notes: 'Khuyến cáo nên giữ chỗ, chưa cần thanh toán vé chính thức trước khi có kết quả.'
   },
   {
     id: 'c6',
     category: 'trip',
-    title: 'Xác nhận đặt phòng khách sạn (Hotel Booking)',
-    description: 'Xác nhận booking phòng khách sạn tại các điểm đến xuyên suốt chuyến đi.',
+    title: 'Thông tin lưu trú dự kiến (Khách sạn)',
+    description: 'Xác nhận đặt phòng tại các điểm đến trong thời gian dự kiến lưu trú.',
     required: true
   },
-  // 03. Hồ sơ công việc & tài chính
+  // 03. Thông tin công việc và tài chính
   {
     id: 'c7',
     category: 'job',
-    title: 'Chứng minh công việc (HĐLĐ / ĐKKD / Xác nhận sinh viên)',
-    description: 'Hợp đồng lao động + Đơn xin nghỉ phép (với nhân viên) hoặc Giấy phép ĐKKD + Tờ khai thuế 3 tháng gần nhất (với chủ DN).',
+    title: 'Thông tin chứng minh công việc',
+    description: 'Giấy tờ thể hiện tình trạng công việc hiện tại (HĐLĐ/đơn nghỉ phép hoặc ĐKKD/thông tin nộp thuế đối với doanh nghiệp).',
     required: true
   },
   {
     id: 'c8',
     category: 'job',
-    title: 'Sao kê tài khoản ngân hàng hoặc sổ tiết kiệm',
-    description: 'Số dư tối thiểu thông thường từ 50.000.000 VNĐ hoặc sao kê tài khoản nhận lương 3-6 tháng gần nhất.',
+    title: 'Thông tin tài chính tham khảo',
+    description: 'Giấy tờ thể hiện năng lực chi trả cho chuyến đi (sao kê tài khoản ngân hàng hoặc sổ tiết kiệm tham khảo).',
     required: false,
-    notes: 'Tùy thuộc vào thời điểm và quy định từng trung tâm tiếp nhận.'
+    notes: 'Yêu cầu cụ thể có thể khác nhau tùy thời điểm và hướng dẫn của cơ quan thẩm quyền.'
   },
-  // 04. Hồ sơ riêng theo diện
+  // 04. Giấy tờ liên quan đến từng mục đích chuyến đi
   {
     id: 'c9',
     category: 'specific',
-    title: 'Thư mời thương mại chính thức (Đối với Diện Thương Mại M)',
-    description: 'Thư mời từ công ty/tổ chức tại Trung Quốc ghi rõ thông tin người được mời, mục đích làm việc, ai chi trả chi phí.',
+    title: 'Thư mời thương mại (Mục đích thương mại / công tác)',
+    description: 'Thư mời hợp lệ từ đơn vị, đối tác tại Trung Quốc nêu rõ nội dung công việc và thông tin người được mời.',
     required: false,
     visaTypes: ['Công tác']
   },
   {
     id: 'c10',
     category: 'specific',
-    title: 'Giấy tờ chứng minh nhân thân (Đối với Diện Thăm Thân Q)',
-    description: 'Bản sao CCCD/Hộ chiếu người mời tại Trung Quốc + Giấy đăng ký kết hôn / Giấy khai sinh công chứng.',
+    title: 'Giấy tờ quan hệ nhân thân (Mục đích thăm thân)',
+    description: 'Giấy tờ chứng minh quan hệ gia đình (khai sinh, đăng ký kết hôn) và thông tin người mời tại Trung Quốc.',
     required: false,
     visaTypes: ['Thăm thân']
   },
   {
     id: 'c11',
     category: 'specific',
-    title: 'Giấy báo nhập học & Mẫu đơn JW201/JW202 (Đối với Diện Học Tập X)',
-    description: 'Bản gốc Admission Notice và mẫu JW do Bộ Giáo dục Trung Quốc phê duyệt.',
+    title: 'Giấy báo nhập học & mẫu đơn (Mục đích học tập)',
+    description: 'Thông báo nhập học từ cơ sở đào tạo và mẫu đơn phê duyệt theo quy định về du học.',
     required: false,
     visaTypes: ['Du học']
   }
@@ -150,58 +150,46 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
 export const FAQS: FaqItem[] = [
   {
     id: 1,
-    category: 'Thủ tục',
-    question: 'Hồ sơ xin cấp thị thực Trung Quốc cần chuẩn bị những giấy tờ gì?',
-    answer: 'Các giấy tờ căn bản gồm: Hộ chiếu gốc còn hạn trên 6 tháng, 2 ảnh chân dung chuẩn 33x48mm phông trắng, bản sao CCCD, tờ khai xin thị thực trực tuyến, cùng với giấy tờ chứng minh chuyến đi (booking phòng, vé máy bay hoặc thư mời) và giấy tờ công việc tương ứng theo từng diện thị thực. Đội ngũ Visa5S sẽ cung cấp checklist chính xác và cá nhân hóa theo từng hồ sơ.'
+    category: 'Pháp lý',
+    question: 'Visa5S có phải cơ quan cấp visa không?',
+    answer: 'Không. Visa5S là doanh nghiệp tư nhân hoạt động độc lập, cung cấp dịch vụ tư vấn thông tin và hỗ trợ chuẩn bị hồ sơ theo nhu cầu của khách hàng. Visa5S không phải cơ quan nhà nước, không phải Đại sứ quán hoặc Tổng Lãnh sự quán Trung Quốc, không phải Trung tâm tiếp nhận hồ sơ thị thực (CVASC) và không đại diện hay trực thuộc các cơ quan này.'
   },
   {
     id: 2,
-    category: 'Thời gian',
-    question: 'Thời gian xét duyệt thị thực Trung Quốc mất bao lâu?',
-    answer: 'Thời gian xét duyệt tiêu chuẩn của Cơ quan ngoại giao và Trung tâm thị thực (CVASC) dao động từ 4 đến 7 ngày làm việc kể từ ngày hoàn tất nộp hồ sơ và lấy dấu vân tay. Nếu bạn có nhu cầu bay gấp, có thể lựa chọn phương án xử lý ưu tiên (khẩn 2-3 ngày) tùy theo quy định và tình trạng hồ sơ.'
+    category: 'Cam kết',
+    question: 'Visa5S có cam kết đậu visa không?',
+    answer: 'Không. Visa5S không cam kết hoặc bảo đảm kết quả cấp visa dưới bất kỳ hình thức nào. Quyền xét duyệt và quyết định cấp visa thuộc thẩm quyền độc quyền của cơ quan đại diện ngoại giao có thẩm quyền của Trung Quốc. Visa5S chỉ hỗ trợ khách hàng chuẩn bị hồ sơ rõ ràng, trung thực và đúng quy chuẩn.'
   },
   {
     id: 3,
     category: 'Chi phí',
-    question: 'Lệ phí và chi phí chuẩn bị hồ sơ thị thực là bao nhiêu?',
-    answer: 'Tổng chi phí thực tế bao gồm các khoản: (1) Lệ phí thị thực nộp cho Đại sứ quán/Lãnh sự quán (thu bằng USD), (2) Phí xử lý của Trung tâm tiếp nhận thị thực Trung Quốc CVASC (khoảng 685.000 VNĐ), và (3) Chi phí tư vấn, chuẩn hóa hồ sơ và đồng hành của Visa5S. Tất cả đều được công khai minh bạch trước khi thực hiện, tuyệt đối không có phụ phí phát sinh ngầm.'
+    question: 'Chi phí dịch vụ được tính như thế nào?',
+    answer: 'Phí dịch vụ tư vấn của Visa5S được thông báo minh bạch, rõ ràng bằng văn bản/báo giá trước khi khách hàng quyết định sử dụng dịch vụ. Các khoản lệ phí nộp cho cơ quan thẩm quyền hoặc trung tâm tiếp nhận (nếu có) được liệt kê tách bạch, cam kết không có chi phí ẩn hay phụ phí không báo trước.'
   },
   {
     id: 4,
     category: 'Tự nộp',
-    question: 'Có thể tự chuẩn bị và nộp hồ sơ thị thực Trung Quốc không?',
-    answer: 'Có, công dân hoàn toàn có quyền tự chuẩn bị hồ sơ, điền form online và đặt lịch hẹn đến nộp tại Trung tâm tiếp nhận thị thực (CVASC Hà Nội, Đà Nẵng hoặc TP.HCM). Tuy nhiên, đồng hành cùng chuyên viên Visa5S giúp bạn tiết kiệm thời gian đi lại, tránh các lỗi điền form bị trả về và tối ưu hồ sơ chỉn chu nhất.'
+    question: 'Tôi có thể tự chuẩn bị giấy tờ không?',
+    answer: 'Hoàn toàn được. Khách hàng hoàn toàn có quyền tự tìm hiểu quy định, chuẩn bị hồ sơ, điền tờ khai trực tuyến và nộp trực tiếp tại cơ quan có thẩm quyền hoặc trung tâm tiếp nhận chính thức mà không bắt buộc phải sử dụng dịch vụ tư vấn của bên thứ ba.'
   },
   {
     id: 5,
-    category: 'So sánh',
-    question: 'Thị thực du lịch và thị thực thương mại khác nhau thế nào?',
-    answer: 'Thị thực du lịch (kí hiệu L) dành cho mục đích tham quan, thưởng ngoạn văn hóa cảnh đẹp, yêu cầu lịch trình du lịch, booking phòng và vé máy bay. Thị thực thương mại (kí hiệu M) bắt buộc phải có Thư mời thương mại có dấu mộc từ phía công ty/đối tác tại Trung Quốc kèm Quyết định cử đi công tác từ công ty ở Việt Nam.'
+    category: 'Hồ sơ',
+    question: 'Yêu cầu giấy tờ có giống nhau không?',
+    answer: 'Không. Mỗi loại visa (du lịch, thương mại, thăm thân, học tập) và mỗi trường hợp cụ thể có yêu cầu giấy tờ khác nhau tùy theo quy định hiện hành của cơ quan thẩm quyền, mục đích chuyến đi cũng như hoàn cảnh công việc, nhân thân của người nộp hồ sơ.'
   },
   {
     id: 6,
-    category: 'Hồ sơ',
-    question: 'Hộ chiếu trắng (chưa từng xuất cảnh) có được cấp thị thực Trung Quốc không?',
-    answer: 'Hoàn toàn được! Lịch sử đi lại tốt là một điểm cộng tăng độ tin cậy, nhưng người có hộ chiếu trắng vẫn có thể được cấp thị thực bình thường nếu chứng minh được mục đích chuyến đi rõ ràng, công việc ổn định và chuẩn bị giấy tờ minh bạch, nhất quán.'
-  },
-  {
-    id: 7,
-    category: 'Pháp lý',
-    question: 'Visa5S có cam kết tỷ lệ chấp thuận thị thực 100% không?',
-    answer: 'Không có bất kỳ đơn vị tư vấn hợp pháp nào có quyền cam kết 100% cấp thị thực, bởi vì quyết định phê duyệt hoàn toàn thuộc thẩm quyền độc quyền của Lãnh sự quán và Cơ quan Ngoại giao Trung Quốc. Visa5S cam kết mang lại sự tận tâm, chuyên môn thẩm định cao nhất để tối ưu hóa hồ sơ đạt tỷ lệ chấp thuận tối đa.'
-  },
-  {
-    id: 8,
-    category: 'Hỗ trợ',
-    question: 'Tôi cần làm gì nếu hồ sơ bị yêu cầu bổ sung giấy tờ hoặc phỏng vấn?',
-    answer: 'Trong các trường hợp cơ quan xét duyệt yêu cầu bổ sung giấy tờ xác minh, chuyên viên Visa5S sẽ liên hệ ngay và hướng dẫn chuẩn bị văn bản bổ sung chuẩn xác, đồng thời hướng dẫn bạn trả lời các câu hỏi phỏng vấn tự tin, đúng trọng tâm nếu có.'
+    category: 'Xét duyệt',
+    question: 'Ai là đơn vị quyết định kết quả xét duyệt?',
+    answer: 'Cơ quan đại diện ngoại giao của Trung Quốc (Đại sứ quán / Tổng Lãnh sự quán) là đơn vị duy nhất có thẩm quyền xét duyệt, phê duyệt và quyết định cấp hoặc từ chối cấp visa. Không cá nhân, tổ chức hay doanh nghiệp tư nhân nào có quyền can thiệp vào quy trình và kết quả này.'
   }
 ];
 
 export const OFFICE_LOCATIONS: OfficeLocation[] = [
   {
     id: 'hcm1',
-    name: 'Trụ sở chính TP. Hồ Chí Minh',
+    name: 'Trụ sở tư vấn chính TP. Hồ Chí Minh',
     address: '370 Đường 3/2, Phường Hòa Hưng, Quận 10, TP. Hồ Chí Minh',
     city: 'TP. Hồ Chí Minh',
     phone: '0911.909.686',
@@ -210,7 +198,7 @@ export const OFFICE_LOCATIONS: OfficeLocation[] = [
   },
   {
     id: 'hcm2',
-    name: 'Văn phòng TP.HCM (Cơ sở 2)',
+    name: 'Văn phòng tư vấn TP.HCM (Cơ sở 2)',
     address: '16 Trần Đại Nghĩa, Phường Đông Hòa, TP. Dĩ An (Giáp Thủ Đức, TP.HCM)',
     city: 'Bình Dương / TP.HCM',
     phone: '0967.686.101',
@@ -219,7 +207,7 @@ export const OFFICE_LOCATIONS: OfficeLocation[] = [
   },
   {
     id: 'hn',
-    name: 'Văn phòng Chi nhánh Hà Nội',
+    name: 'Văn phòng tư vấn Chi nhánh Hà Nội',
     address: '59 Vương Thừa Vũ, Quận Thanh Xuân, Hà Nội',
     city: 'Hà Nội',
     phone: '0911.909.686',

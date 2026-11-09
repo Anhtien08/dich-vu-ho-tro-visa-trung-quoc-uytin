@@ -1,5 +1,6 @@
 import React from 'react';
 import { Phone, MessageCircle, Send } from 'lucide-react';
+import { trackPhoneCall, trackZaloClick } from '../utils/analytics';
 
 interface MobileBottomNavProps {
   onConsultClick: () => void;
@@ -13,6 +14,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({ onConsultClick
         <a
           href="tel:0911909686"
           data-path="hotline-call"
+          onClick={() => trackPhoneCall('0911909686')}
           className="flex-1 min-h-[44px] px-2 py-1.5 rounded-xl bg-[#eaedff] flex items-center justify-center gap-1.5 text-[#131b2e] hover:bg-[#d5e3ff] transition-all text-center"
         >
           <Phone className="w-4 h-4 text-[#0051d5] shrink-0" />
@@ -25,6 +27,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({ onConsultClick
           target="_blank"
           rel="noopener noreferrer"
           data-path="chat-zalo"
+          onClick={trackZaloClick}
           className="flex-1 min-h-[44px] px-2 py-1.5 rounded-xl bg-[#eaedff] flex items-center justify-center gap-1.5 text-[#131b2e] hover:bg-[#d5e3ff] transition-all text-center"
         >
           <MessageCircle className="w-4 h-4 text-[#0051d5] shrink-0" />

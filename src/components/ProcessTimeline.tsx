@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle2, ChevronRight, Send, HelpCircle, AlertTriangle } from 'lucide-react';
+import { ChevronRight, Send, HelpCircle } from 'lucide-react';
 
 interface ProcessTimelineProps {
   onStartConsult: () => void;
@@ -13,41 +13,33 @@ export const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onStartConsult
       num: 1,
       title: 'Tiếp nhận nhu cầu',
       short: 'Tiếp nhận',
-      desc: 'Khách hàng cung cấp mục đích chuyến đi, thời gian dự kiến khởi hành và thông tin cơ bản của bản thân.',
-      details: 'Chuyên viên Visa5S phân tích sơ bộ hồ sơ: Bạn đã từng đi những nước nào, tình trạng công việc hiện tại (nhân viên, chủ doanh nghiệp hay kinh doanh tự do) để định hướng phương án phù hợp nhất.',
-      tip: 'Nên chuẩn bị sẵn hộ chiếu và thời gian mong muốn xuất cảnh để được hỗ trợ nhanh nhất.'
+      desc: 'Khách hàng liên hệ và cung cấp thông tin về kế hoạch, mục đích chuyến đi và thời gian dự kiến.',
+      details: 'Nhân viên Visa5S tiếp nhận thông tin từ bạn: kế hoạch đi lại, thời gian dự kiến, mục đích chuyến đi (du lịch, khảo sát thị trường hay thăm thân) để phân tích nhu cầu ban đầu.',
+      tip: 'Bạn có thể chuẩn bị trước dự kiến thời gian đi để nhân viên tư vấn khung thời gian chuẩn bị hợp lý.'
     },
     {
       num: 2,
-      title: 'Tư vấn diện thị thực',
-      short: 'Tư vấn thị thực',
-      desc: 'Xem xét trường hợp cụ thể và hướng dẫn diện thị thực phù hợp để khách hàng tham khảo (Du lịch L, Thương mại M, Thăm thân Q...).',
-      details: 'Xác định chính xác diện thị thực giúp tránh tình trạng nộp sai mục đích dẫn đến việc bị từ chối hoặc phải bổ sung giấy tờ phức tạp.',
-      tip: 'Mỗi diện thị thực có bộ chứng từ chứng minh khác biệt: ví dụ diện M bắt buộc có thư mời từ đối tác bên Trung Quốc.'
+      title: 'Trao đổi và tư vấn',
+      short: 'Tư vấn thông tin',
+      desc: 'Trao đổi chi tiết, phân tích mục đích chuyến đi và cung cấp thông tin về loại visa phù hợp.',
+      details: 'Nhân viên tư vấn sẽ làm rõ các diện visa Trung Quốc hiện hành (L, M, Q, X), phân tích trường hợp cụ thể và giải thích các quy định liên quan để khách hàng tham khảo.',
+      tip: 'Mỗi diện visa có những yêu cầu đặc thù về giấy tờ chứng minh mục đích chuyến đi.'
     },
     {
       num: 3,
-      title: 'Chuẩn bị hồ sơ',
-      short: 'Chuẩn bị hồ sơ',
-      desc: 'Hướng dẫn danh sách giấy tờ và kiểm tra tính đầy đủ, hợp lệ theo thỏa thuận tư vấn hỗ trợ.',
-      details: 'Visa5S cung cấp danh mục checklist cá nhân hóa, hỗ trợ điền tờ khai thị thực trực tuyến (online form) song ngữ chuẩn xác, chỉnh sửa ảnh thẻ theo kích thước 33x48mm.',
-      tip: 'Các thông tin trên tờ khai phải khớp 100% với vé máy bay, booking phòng khách sạn và lịch trình.'
+      title: 'Hướng dẫn chuẩn bị giấy tờ',
+      short: 'Chuẩn bị giấy tờ',
+      desc: 'Cung cấp danh mục giấy tờ tham khảo thường được cơ quan có thẩm quyền yêu cầu.',
+      details: 'Visa5S hướng dẫn khách hàng cách thức chuẩn bị, sắp xếp các giấy tờ cá nhân, công việc, kế hoạch chuyến đi sao cho rõ ràng, logic và dễ tra cứu theo đúng quy chuẩn.',
+      tip: 'Khách hàng tự quyết định việc sử dụng thông tin tư vấn và chủ động kiểm tra tính xác thực của các giấy tờ.'
     },
     {
       num: 4,
-      title: 'Hoàn thiện thủ tục & Lăn tay',
-      short: 'Nộp & Sinh trắc',
-      desc: 'Hỗ trợ các bước tiếp theo theo thỏa thuận và quy trình áp dụng của Trung tâm tiếp nhận thị thực CVASC.',
-      details: 'Đặt lịch hẹn trực tuyến tại Trung tâm tiếp nhận thị thực (CVASC Hà Nội, Đà Nẵng hoặc TP.HCM). Hướng dẫn đương đơn đến lăn vân tay sinh trắc học và nộp hộ chiếu gốc theo giờ hẹn.',
-      tip: 'Hiện nay hầu hết các diện thị thực Trung Quốc đều yêu cầu đương đơn đến trực tiếp để chụp ảnh và lấy dấu vân tay.'
-    },
-    {
-      num: 5,
-      title: 'Theo dõi & Nhận kết quả',
-      short: 'Nhận kết quả',
-      desc: 'Hướng dẫn khách hàng theo dõi hồ sơ và thông tin nhận kết quả thị thực theo quy định.',
-      details: 'Chuyên viên Visa5S theo dõi sát sao tình trạng hồ sơ trên hệ thống, nhận lại hộ chiếu kèm thị thực và bàn giao tận tay khách hàng hoặc chuyển phát bảo đảm.',
-      tip: 'Kiểm tra kỹ các thông tin in trên thị thực (họ tên, số hộ chiếu, số lần nhập cảnh, thời hạn) ngay khi nhận được.'
+      title: 'Giải đáp thắc mắc',
+      short: 'Giải đáp thắc mắc',
+      desc: 'Đồng hành giải đáp mọi câu hỏi trong quá trình tìm hiểu và hỗ trợ rà soát thông tin.',
+      details: 'Trong suốt quá trình chuẩn bị trước khi nộp hồ sơ, nhân viên Visa5S luôn sẵn sàng giải đáp các vướng mắc, hướng dẫn cách điền biểu mẫu trực tuyến và chia sẻ kinh nghiệm thực tế.',
+      tip: 'Visa5S không can thiệp, không đại diện và không có quyền quyết định kết quả của cơ quan xét duyệt.'
     }
   ];
 
@@ -56,18 +48,18 @@ export const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onStartConsult
       <div className="max-w-7xl mx-auto flex flex-col gap-8">
         <div className="flex flex-col gap-2 max-w-3xl">
           <span className="text-xs font-bold text-[#0051d5] uppercase tracking-wider">
-            Quy Trình Chuyên Nghiệp
+            Quy Trình Làm Việc
           </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-[#001f41] tracking-tight">
-            QUY TRÌNH HỖ TRỢ HỒ SƠ THỊ THỰC TRUNG QUỐC
+            QUY TRÌNH TƯ VẤN VÀ HỖ TRỢ THÔNG TIN
           </h2>
           <p className="text-sm sm:text-base text-[#43474f]">
-            5 bước tiếp cận chuẩn mực giúp bạn nắm bắt tiến độ một cách minh bạch và dễ dàng.
+            4 bước hỗ trợ rõ ràng, minh bạch giúp khách hàng dễ dàng theo dõi và chủ động trong mọi khâu chuẩn bị.
           </p>
         </div>
 
-        {/* Desktop Pipeline Navigator */}
-        <div className="hidden lg:grid grid-cols-5 gap-3">
+        {/* Desktop Pipeline Navigator (4 steps) */}
+        <div className="hidden lg:grid grid-cols-4 gap-3">
           {steps.map((st, idx) => (
             <button
               key={st.num}
@@ -111,7 +103,7 @@ export const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onStartConsult
               <div className="flex items-start gap-3">
                 <div
                   className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shrink-0 ${
-                    idx === 0 || idx === 4 ? 'bg-[#001f41] text-white' : 'bg-[#0051d5] text-white'
+                    selectedStep === idx ? 'bg-[#0051d5] text-white' : 'bg-[#001f41] text-white'
                   }`}
                 >
                   {st.num}
@@ -130,7 +122,7 @@ export const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onStartConsult
           <div className="flex-1 space-y-2">
             <div className="flex items-center gap-2">
               <span className="px-2.5 py-0.5 rounded-full bg-[#eaedff] text-[#0051d5] text-xs font-bold uppercase tracking-wider">
-                Chi tiết Bước {steps[selectedStep].num}
+                Bước {steps[selectedStep].num}
               </span>
               <h3 className="text-base font-bold text-[#001f41]">{steps[selectedStep].title}</h3>
             </div>
@@ -139,7 +131,7 @@ export const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onStartConsult
             </p>
             <div className="p-2.5 rounded-lg bg-[#f2f3ff] text-xs text-[#0051d5] font-medium flex items-center gap-2">
               <HelpCircle className="w-4 h-4 shrink-0" />
-              <span>Chuyên viên lưu ý: {steps[selectedStep].tip}</span>
+              <span>Lưu ý: {steps[selectedStep].tip}</span>
             </div>
           </div>
 
@@ -148,7 +140,7 @@ export const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onStartConsult
             className="w-full md:w-auto h-12 px-6 rounded-xl bg-[#0051d5] text-white text-xs font-bold uppercase tracking-wider shadow-sm hover:bg-[#003ea8] transition-all flex items-center justify-center gap-2 shrink-0 active:scale-95"
           >
             <Send className="w-4 h-4" />
-            <span>Bắt Đầu Tư Vấn Hồ Sơ</span>
+            <span>Liên Hệ Nhận Tư Vấn</span>
           </button>
         </div>
       </div>

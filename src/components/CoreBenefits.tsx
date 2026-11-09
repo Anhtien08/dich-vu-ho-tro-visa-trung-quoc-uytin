@@ -1,5 +1,5 @@
 import React from 'react';
-import { Headphones, ClipboardCheck, CreditCard, RefreshCw } from 'lucide-react';
+import { Headphones, ClipboardCheck, CreditCard, MessageSquareQuote } from 'lucide-react';
 
 export const CoreBenefits: React.FC = () => {
   return (
@@ -11,11 +11,11 @@ export const CoreBenefits: React.FC = () => {
               Lợi Thế Tại Visa5S
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold text-white mt-1">
-              Đồng Hành Minh Bạch &amp; An Tâm
+              TƯ VẤN TẬN TÂM – THÔNG TIN RÕ RÀNG
             </h2>
           </div>
           <p className="text-xs sm:text-sm text-[#7f9dd0] max-w-md">
-            Mỗi khách hàng đều được phân công chuyên viên theo dõi hồ sơ từ khâu rà soát giấy tờ đến khi có kết quả.
+            Doanh nghiệp tư nhân cung cấp dịch vụ tư vấn thông tin và hỗ trợ chuẩn bị hồ sơ theo nhu cầu cụ thể của từng khách hàng.
           </p>
         </div>
 
@@ -25,9 +25,9 @@ export const CoreBenefits: React.FC = () => {
             <div className="w-8 h-8 rounded-lg bg-[#0051d5] flex items-center justify-center text-white shrink-0">
               <Headphones className="w-4 h-4" />
             </div>
-            <span className="text-sm font-bold text-white">Tư vấn tận tâm</span>
+            <span className="text-sm font-bold text-white">Tư vấn theo nhu cầu</span>
             <span className="text-xs text-[#d5e3ff] leading-relaxed">
-              Lắng nghe và phân tích sát theo từng trường hợp (hộ chiếu trắng, tự do, chủ DN).
+              Trao đổi và phân tích nhu cầu của khách hàng để đưa ra định hướng phù hợp nhất với mục đích chuyến đi.
             </span>
           </div>
 
@@ -36,9 +36,9 @@ export const CoreBenefits: React.FC = () => {
             <div className="w-8 h-8 rounded-lg bg-[#0051d5] flex items-center justify-center text-white shrink-0">
               <ClipboardCheck className="w-4 h-4" />
             </div>
-            <span className="text-sm font-bold text-white">Hướng dẫn chi tiết</span>
+            <span className="text-sm font-bold text-white">Hướng dẫn chuẩn bị</span>
             <span className="text-xs text-[#d5e3ff] leading-relaxed">
-              Danh mục hồ sơ rõ ràng, biểu mẫu chuẩn xác, hạn chế tối đa nguy cơ bị yêu cầu bổ sung.
+              Cung cấp thông tin về giấy tờ thường được yêu cầu theo hướng dẫn của cơ quan có thẩm quyền.
             </span>
           </div>
 
@@ -47,20 +47,20 @@ export const CoreBenefits: React.FC = () => {
             <div className="w-8 h-8 rounded-lg bg-[#0051d5] flex items-center justify-center text-white shrink-0">
               <CreditCard className="w-4 h-4" />
             </div>
-            <span className="text-sm font-bold text-white">Báo phí rõ ràng</span>
+            <span className="text-sm font-bold text-white">Chi phí minh bạch</span>
             <span className="text-xs text-[#d5e3ff] leading-relaxed">
-              Minh bạch chi phí hỗ trợ và lệ phí Lãnh sự ngay từ đầu, tuyệt đối không có chi phí ẩn.
+              Thông báo rõ phí dịch vụ và các khoản liên quan ngay từ đầu, tuyệt đối không có chi phí ẩn.
             </span>
           </div>
 
           {/* Card 4 */}
           <div className="p-4 rounded-xl bg-[#0f3460]/90 border border-white/10 flex flex-col gap-2 shadow-sm hover:border-[#0051d5] transition-colors">
             <div className="w-8 h-8 rounded-lg bg-[#0051d5] flex items-center justify-center text-white shrink-0">
-              <RefreshCw className="w-4 h-4" />
+              <MessageSquareQuote className="w-4 h-4" />
             </div>
-            <span className="text-sm font-bold text-white">Theo sát quy trình</span>
+            <span className="text-sm font-bold text-white">Đồng hành thông tin</span>
             <span className="text-xs text-[#d5e3ff] leading-relaxed">
-              Hỗ trợ đặt lịch hẹn CVASC, đồng hành lấy sinh trắc và cập nhật tiến độ liên tục.
+              Giải đáp thắc mắc trong quá trình tìm hiểu và chuẩn bị giấy tờ một cách nhanh chóng, chu đáo.
             </span>
           </div>
         </div>

@@ -1,18 +1,18 @@
 import React from 'react';
-import { HelpCircle, Sliders, ShieldCheck, LifeBuoy, Building2, UserCheck, CheckCircle } from 'lucide-react';
+import { HelpCircle, Sliders, ShieldCheck, LifeBuoy } from 'lucide-react';
 
 export const WhyChooseUs: React.FC = () => {
   return (
     <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
       <div className="flex flex-col gap-2 max-w-3xl mb-8">
         <span className="text-xs font-bold text-[#0051d5] uppercase tracking-wider">
-          Giá Trị Cốt Lõi
+          Giá Trị Dịch Vụ
         </span>
         <h2 className="text-2xl sm:text-3xl font-extrabold text-[#001f41] tracking-tight">
           LÝ DO KHÁCH HÀNG LỰA CHỌN VISA5S
         </h2>
         <p className="text-sm text-[#43474f]">
-          Chúng tôi mang lại giải pháp toàn diện giúp bạn vượt qua những thủ tục hồ sơ thị thực phức tạp một cách thuận lợi nhất.
+          Doanh nghiệp tư nhân đồng hành tư vấn thông tin và hỗ trợ chuẩn bị hồ sơ một cách rõ ràng, chu đáo theo nhu cầu của khách hàng.
         </p>
       </div>
 
@@ -25,7 +25,7 @@ export const WhyChooseUs: React.FC = () => {
           <div className="flex flex-col">
             <h3 className="text-sm font-bold text-[#001f41]">Tư vấn dễ hiểu, đúng trọng tâm</h3>
             <p className="text-xs text-[#43474f] mt-1 leading-relaxed">
-              Giải thích cặn kẽ những vướng mắc của hồ sơ bằng ngôn ngữ đơn giản, trung thực, không gây hoang mang cho khách hàng.
+              Giải thích cặn kẽ những vướng mắc của hồ sơ bằng ngôn ngữ đơn giản, trung thực, giúp khách hàng nắm rõ thông tin cần thiết.
             </p>
           </div>
         </div>
@@ -38,7 +38,7 @@ export const WhyChooseUs: React.FC = () => {
           <div className="flex flex-col">
             <h3 className="text-sm font-bold text-[#001f41]">Hướng dẫn theo từng trường hợp</h3>
             <p className="text-xs text-[#43474f] mt-1 leading-relaxed">
-              Không áp dụng một công thức chung dập khuôn; mỗi bộ chứng từ đều được cá nhân hóa sát thực tế hoàn cảnh công việc của bạn.
+              Không áp dụng một công thức chung dập khuôn; mỗi trường hợp đều được trao đổi chi tiết sát theo hoàn cảnh chuyến đi thực tế của bạn.
             </p>
           </div>
         </div>
@@ -62,9 +62,9 @@ export const WhyChooseUs: React.FC = () => {
             <LifeBuoy className="w-5 h-5" />
           </div>
           <div className="flex flex-col">
-            <h3 className="text-sm font-bold text-[#001f41]">Hỗ trợ xuyên suốt thủ tục</h3>
+            <h3 className="text-sm font-bold text-[#001f41]">Đồng hành giải đáp thắc mắc</h3>
             <p className="text-xs text-[#43474f] mt-1 leading-relaxed">
-              Đồng hành xử lý các phát sinh, hướng dẫn sắp xếp hồ sơ khoa học giúp quá trình nộp tại CVASC diễn ra nhanh chóng.
+              Hỗ trợ giải đáp các câu hỏi trong suốt quá trình chuẩn bị, hướng dẫn sắp xếp giấy tờ khoa học và chu đáo.
             </p>
           </div>
         </div>

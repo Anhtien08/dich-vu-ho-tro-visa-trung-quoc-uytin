@@ -1,6 +1,7 @@
 import React from 'react';
 import { OFFICE_LOCATIONS } from '../data/visaData';
 import { MapPin, Phone, Mail, Clock, ShieldAlert, ExternalLink } from 'lucide-react';
+import { trackPhoneCall, trackZaloClick } from '../utils/analytics';
 
 export const OfficesSection: React.FC = () => {
   return (
@@ -13,7 +14,7 @@ export const OfficesSection: React.FC = () => {
           THÔNG TIN LIÊN HỆ VISA5S
         </h2>
         <p className="text-sm text-[#43474f]">
-          Khách hàng có thể kết nối tư vấn từ xa trực tuyến hoặc đến trực tiếp văn phòng chi nhánh gần nhất để nộp hồ sơ.
+          Khách hàng có thể kết nối tư vấn từ xa trực tuyến hoặc đến trực tiếp văn phòng chi nhánh gần nhất để trao đổi thông tin.
         </p>
       </div>
 
@@ -28,7 +29,7 @@ export const OfficesSection: React.FC = () => {
             <div>
               <div className="flex items-center justify-between mb-3">
                 <span className="text-xs font-bold text-[#0051d5] uppercase tracking-wider">
-                  {office.isHeadquarter ? 'Trụ sở chính' : 'Chi nhánh'}
+                  {office.isHeadquarter ? 'Trụ sở tư vấn chính' : 'Chi nhánh tư vấn'}
                 </span>
                 <span className="px-2 py-0.5 rounded bg-slate-100 text-[10px] font-semibold text-slate-600">
                   {office.city}
@@ -45,7 +46,11 @@ export const OfficesSection: React.FC = () => {
 
                 <div className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-[#0051d5] shrink-0" />
-                  <a href={`tel:${office.phone.replace(/[^0-9]/g, '')}`} className="font-bold text-[#001f41] hover:text-[#0051d5]">
+                  <a
+                    href={`tel:${office.phone.replace(/[^0-9]/g, '')}`}
+                    onClick={() => trackPhoneCall(office.phone)}
+                    className="font-bold text-[#001f41] hover:text-[#0051d5]"
+                  >
                     {office.phone}
                   </a>
                 </div>
@@ -69,6 +74,7 @@ export const OfficesSection: React.FC = () => {
               </a>
               <a
                 href={`tel:${office.phone.replace(/[^0-9]/g, '')}`}
+                onClick={() => trackPhoneCall(office.phone)}
                 className="px-3 py-1 rounded-lg bg-[#eaedff] text-[#001f41] hover:bg-[#d5e3ff] text-xs font-bold transition-colors"
               >
                 Gọi ngay
@@ -85,7 +91,7 @@ export const OfficesSection: React.FC = () => {
             <Phone className="w-5 h-5" />
           </div>
           <div>
-            <span className="text-xs text-[#a9c8fc] block font-semibold">Hotline Tiếp Nhận &amp; Hỗ Trợ Khẩn:</span>
+            <span className="text-xs text-[#a9c8fc] block font-semibold">Hotline Tiếp Nhận Thông Tin &amp; Tư Vấn:</span>
             <span className="text-lg sm:text-xl font-black text-white tracking-wide">
               0911.909.686 &bull; 0967.686.101
             </span>
@@ -97,6 +103,7 @@ export const OfficesSection: React.FC = () => {
             href="https://zalo.me/0911909686"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={trackZaloClick}
             className="flex-1 sm:flex-initial px-4 py-2.5 rounded-xl bg-[#0051d5] hover:bg-[#316bf3] text-white text-xs font-bold text-center transition-colors"
           >
             Chat Zalo Tư Vấn
@@ -117,7 +124,7 @@ export const OfficesSection: React.FC = () => {
         <div className="flex flex-col gap-1 text-xs">
           <span className="font-bold text-[#001f41]">Tuyên bố minh bạch pháp lý:</span>
           <p className="text-[#43474f] leading-relaxed">
-            Visa5S là đơn vị tư vấn và hỗ trợ chuẩn bị hồ sơ thị thực độc lập, không phải cơ quan đại diện ngoại giao của Chính phủ Trung Quốc. Chúng tôi không cấp thị thực; quyền phê duyệt hồ sơ thị thực hoàn toàn thuộc về Đại sứ quán và Tổng lãnh sự quán Trung Quốc theo thẩm quyền ngoại giao.
+            Visa5S là doanh nghiệp tư nhân hoạt động độc lập, cung cấp dịch vụ tư vấn thông tin và hỗ trợ chuẩn bị hồ sơ theo nhu cầu của khách hàng. Visa5S không phải cơ quan nhà nước, không phải Đại sứ quán hoặc Tổng Lãnh sự quán Trung Quốc, không phải Trung tâm tiếp nhận hồ sơ thị thực và không có thẩm quyền xét duyệt hay cấp thị thực.
           </p>
         </div>
       </div>

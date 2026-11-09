@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, Menu, X, ShieldCheck } from 'lucide-react';
+import { trackPhoneCall } from '../utils/analytics';
 
 interface HeaderProps {
   onSelectVisa?: (type: string) => void;
@@ -30,7 +31,7 @@ export const Header: React.FC<HeaderProps> = () => {
         {/* Desktop Nav Zone */}
         <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-[#43474f]">
           <a href="#dich-vu" className="hover:text-[#0051d5] transition-colors whitespace-nowrap">
-            Danh Mục Thị Thực
+            Danh Mục Visa
           </a>
           <a href="#ho-so" className="hover:text-[#0051d5] transition-colors whitespace-nowrap">
             Chuẩn Bị Hồ Sơ
@@ -51,6 +52,7 @@ export const Header: React.FC<HeaderProps> = () => {
           {/* Hotline */}
           <a
             href="tel:0911909686"
+            onClick={() => trackPhoneCall('0911909686')}
             className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#f2f3ff] text-[#0051d5] hover:bg-[#eaedff] text-xs font-semibold transition-colors"
           >
             <Phone className="w-3.5 h-3.5" />
@@ -81,9 +83,9 @@ export const Header: React.FC<HeaderProps> = () => {
         <div className="lg:hidden bg-white border-b border-[#eaedff] px-4 pt-3 pb-6 flex flex-col gap-3 shadow-lg animate-in slide-in-from-top duration-200">
           <div className="flex items-center justify-between pb-2 border-b border-slate-100">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Menu Điều Hướng</span>
-            <div className="flex items-center gap-1 text-[11px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+            <div className="flex items-center gap-1 text-[11px] text-[#0051d5] bg-[#eaedff] px-2 py-0.5 rounded font-semibold">
               <ShieldCheck className="w-3.5 h-3.5" />
-              <span>Chuyên Viên Thường Trực</span>
+              <span>Tư Vấn Doanh Nghiệp Tư Nhân</span>
             </div>
           </div>
           <a
@@ -91,21 +93,21 @@ export const Header: React.FC<HeaderProps> = () => {
             onClick={() => setMobileMenuOpen(false)}
             className="px-3 py-2 text-sm font-semibold text-[#131b2e] hover:bg-[#f2f3ff] rounded-lg transition-colors"
           >
-            Danh Mục Thị Thực Trung Quốc
+            Danh Mục Visa Trung Quốc
           </a>
           <a
             href="#ho-so"
             onClick={() => setMobileMenuOpen(false)}
             className="px-3 py-2 text-sm font-semibold text-[#131b2e] hover:bg-[#f2f3ff] rounded-lg transition-colors"
           >
-            Chuẩn Bị Hồ Sơ Thị Thực
+            Chuẩn Bị Hồ Sơ Tham Khảo
           </a>
           <a
             href="#quy-trinh"
             onClick={() => setMobileMenuOpen(false)}
             className="px-3 py-2 text-sm font-semibold text-[#131b2e] hover:bg-[#f2f3ff] rounded-lg transition-colors"
           >
-            5 Bước Quy Trình Hỗ Trợ
+            Quy Trình Tư Vấn Hỗ Trợ
           </a>
           <a
             href="#faq"
@@ -119,7 +121,7 @@ export const Header: React.FC<HeaderProps> = () => {
             onClick={() => setMobileMenuOpen(false)}
             className="px-3 py-2 text-sm font-semibold text-[#131b2e] hover:bg-[#f2f3ff] rounded-lg transition-colors"
           >
-            Địa Chỉ Văn Phòng & Hotline
+            Địa Chỉ Văn Phòng &amp; Hotline
           </a>
 
           <div className="pt-2">
@@ -128,7 +130,7 @@ export const Header: React.FC<HeaderProps> = () => {
               onClick={() => setMobileMenuOpen(false)}
               className="w-full py-2.5 rounded-lg bg-[#0051d5] text-white font-bold text-xs text-center uppercase tracking-wider shadow-sm flex items-center justify-center"
             >
-              Nhận Tư Vấn Miễn Phí Ngay
+              Nhận Thông Tin Tư Vấn Ngay
             </a>
           </div>
         </div>

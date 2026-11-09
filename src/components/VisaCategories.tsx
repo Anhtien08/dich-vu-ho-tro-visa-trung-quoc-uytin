@@ -14,13 +14,13 @@ export const VisaCategories: React.FC<VisaCategoriesProps> = ({ onSelectVisa }) 
     <section id="dich-vu" className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
       <div className="flex flex-col gap-2 max-w-3xl mb-8">
         <span className="text-xs font-bold text-[#0051d5] uppercase tracking-wider">
-          Danh Mục Thị Thực
+          Danh Mục Visa
         </span>
         <h2 className="text-2xl sm:text-3xl font-extrabold text-[#001f41] tracking-tight">
-          BẠN CẦN THỊ THỰC TRUNG QUỐC CHO MỤC ĐÍCH NÀO?
+          BẠN ĐANG TÌM HIỂU LOẠI VISA TRUNG QUỐC NÀO?
         </h2>
         <p className="text-sm sm:text-base text-[#43474f]">
-          Lựa chọn đúng diện thị thực là bước đầu tiên để chuẩn bị hồ sơ phù hợp với kế hoạch của bạn.
+          Visa5S cung cấp dịch vụ tư vấn thông tin và hướng dẫn chuẩn bị hồ sơ theo nhu cầu du lịch, công tác, thăm thân và học tập tại Trung Quốc.
         </p>
       </div>
 
@@ -42,7 +42,7 @@ export const VisaCategories: React.FC<VisaCategoriesProps> = ({ onSelectVisa }) 
                   <div>
                     <h3 className="font-bold text-base text-[#001f41] leading-tight">{visa.name}</h3>
                     <span className="text-[11px] font-semibold text-[#0051d5] uppercase">
-                      Ký hiệu loại {visa.code}
+                      Ký hiệu {visa.code}
                     </span>
                   </div>
                 </div>
@@ -60,11 +60,11 @@ export const VisaCategories: React.FC<VisaCategoriesProps> = ({ onSelectVisa }) 
 
               <div className="space-y-1.5 text-[11px] text-[#747780] border-t border-[#f2f3ff] pt-3 mb-4">
                 <div className="flex items-start gap-1.5">
-                  <span className="font-semibold text-[#131b2e] shrink-0">Hiệu lực:</span>
+                  <span className="font-semibold text-[#131b2e] shrink-0">Thời hạn tham khảo:</span>
                   <span className="truncate">{visa.validity}</span>
                 </div>
                 <div className="flex items-start gap-1.5">
-                  <span className="font-semibold text-[#131b2e] shrink-0">Điều kiện chính:</span>
+                  <span className="font-semibold text-[#131b2e] shrink-0">Giấy tờ tham khảo:</span>
                   <span className="truncate">{visa.keyRequirement}</span>
                 </div>
               </div>
@@ -75,7 +75,7 @@ export const VisaCategories: React.FC<VisaCategoriesProps> = ({ onSelectVisa }) 
                 type="button"
                 onClick={() => setActiveModalVisa(visa)}
                 className="flex-1 py-2 px-2.5 rounded-lg bg-[#eaedff] hover:bg-[#d5e3ff] text-[#001f41] text-xs font-semibold flex items-center justify-center gap-1 transition-colors"
-                title="Xem điều kiện chi tiết"
+                title="Xem thông tin chi tiết"
               >
                 <Info className="w-3.5 h-3.5 text-[#0051d5]" />
                 <span>Chi tiết</span>
@@ -98,7 +98,7 @@ export const VisaCategories: React.FC<VisaCategoriesProps> = ({ onSelectVisa }) 
       <div className="p-3.5 rounded-xl bg-white border border-[#eaedff] flex items-start gap-2.5 mt-5 text-[#43474f]">
         <HelpCircle className="w-4 h-4 text-[#747780] shrink-0 mt-0.5" />
         <p className="text-xs leading-relaxed">
-          <strong className="text-[#001f41]">Ghi chú:</strong> Diện thị thực và hồ sơ cụ thể cần được xác định theo mục đích thực tế, thời gian lưu trú và quy định hiện hành của cơ quan ngoại giao. Nếu bạn chưa rõ diện thị thực phù hợp, chuyên viên Visa5S sẽ tư vấn giải pháp tối ưu.
+          <strong className="text-[#001f41]">Lưu ý minh bạch:</strong> Visa5S là đơn vị tư vấn độc lập, không có thẩm quyền cấp, xét duyệt hoặc bảo đảm kết quả visa. Việc xét duyệt và quyết định cấp visa thuộc thẩm quyền độc quyền của cơ quan có thẩm quyền.
         </p>
       </div>
 
@@ -119,7 +119,7 @@ export const VisaCategories: React.FC<VisaCategoriesProps> = ({ onSelectVisa }) 
               </div>
               <div>
                 <h3 className="text-lg font-bold text-[#001f41]">{activeModalVisa.name}</h3>
-                <span className="text-xs font-semibold text-[#0051d5]">Diện thị thực loại {activeModalVisa.code}</span>
+                <span className="text-xs font-semibold text-[#0051d5]">Loại {activeModalVisa.code} (Thông tin tham khảo)</span>
               </div>
             </div>
 
@@ -129,11 +129,11 @@ export const VisaCategories: React.FC<VisaCategoriesProps> = ({ onSelectVisa }) 
 
             <div className="space-y-3 bg-[#f8fafc] p-4 rounded-xl border border-slate-100 text-xs mb-5">
               <div className="flex justify-between border-b border-slate-200 pb-2">
-                <span className="font-semibold text-slate-500">Đối tượng áp dụng:</span>
+                <span className="font-semibold text-slate-500">Đối tượng tìm hiểu:</span>
                 <span className="font-medium text-slate-800 text-right">{activeModalVisa.targetAudience}</span>
               </div>
               <div className="flex justify-between border-b border-slate-200 pb-2">
-                <span className="font-semibold text-slate-500">Thời hạn thị thực:</span>
+                <span className="font-semibold text-slate-500">Thời hạn tham khảo:</span>
                 <span className="font-medium text-slate-800 text-right">{activeModalVisa.validity}</span>
               </div>
               <div className="flex justify-between border-b border-slate-200 pb-2">
@@ -145,7 +145,7 @@ export const VisaCategories: React.FC<VisaCategoriesProps> = ({ onSelectVisa }) 
                 <span className="font-medium text-slate-800 text-right">{activeModalVisa.entries}</span>
               </div>
               <div className="flex flex-col gap-1 pt-1">
-                <span className="font-semibold text-slate-500">Yêu cầu then chốt:</span>
+                <span className="font-semibold text-slate-500">Yêu cầu giấy tờ tham khảo:</span>
                 <span className="font-medium text-slate-800 bg-white p-2 rounded border border-slate-200">
                   {activeModalVisa.keyRequirement}
                 </span>
@@ -170,7 +170,7 @@ export const VisaCategories: React.FC<VisaCategoriesProps> = ({ onSelectVisa }) 
                 className="flex-1 py-2.5 rounded-lg bg-[#0051d5] text-white text-xs font-bold hover:bg-[#003ea8] shadow-sm transition-colors flex items-center justify-center gap-1.5"
               >
                 <Check className="w-4 h-4" />
-                <span>Chọn diện thị thực này</span>
+                <span>Nhận tư vấn loại này</span>
               </button>
             </div>
           </div>

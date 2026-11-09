@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CHECKLIST_ITEMS } from '../data/visaData';
-import { Check, CheckCircle2, AlertCircle, FileCheck, Copy, Sparkles } from 'lucide-react';
+import { Check, AlertCircle, FileCheck, Copy, Sparkles } from 'lucide-react';
 
 interface DocumentChecklistProps {
   onGetChecklistConsultation: () => void;
@@ -10,7 +10,7 @@ export const DocumentChecklist: React.FC<DocumentChecklistProps> = ({ onGetCheck
   // Store ticked items for interactive readiness audit
   const [checkedIds, setCheckedIds] = useState<Record<string, boolean>>({
     c1: true, // Default passport usually available
-    c3: true  // Default CCCD usually available
+    c3: true  // Default ID usually available
   });
   const [copied, setCopied] = useState(false);
 
@@ -32,10 +32,10 @@ export const DocumentChecklist: React.FC<DocumentChecklistProps> = ({ onGetCheck
   };
 
   const categories = [
-    { key: 'personal', num: '01', title: 'Giấy tờ cá nhân' },
-    { key: 'trip', num: '02', title: 'Hồ sơ chuyến đi' },
-    { key: 'job', num: '03', title: 'Hồ sơ công việc & tài chính' },
-    { key: 'specific', num: '04', title: 'Hồ sơ riêng theo từng diện' },
+    { key: 'personal', num: '01', title: 'Thông tin cá nhân' },
+    { key: 'trip', num: '02', title: 'Thông tin chuyến đi' },
+    { key: 'job', num: '03', title: 'Thông tin công việc và tài chính' },
+    { key: 'specific', num: '04', title: 'Giấy tờ liên quan đến từng mục đích chuyến đi' },
   ];
 
   return (
@@ -46,10 +46,10 @@ export const DocumentChecklist: React.FC<DocumentChecklistProps> = ({ onGetCheck
             Chuẩn Bị Giấy Tờ
           </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-[#001f41] tracking-tight mt-1">
-            HỒ SƠ THỊ THỰC TRUNG QUỐC GỒM NHỮNG GÌ?
+            THAM KHẢO CÁC NHÓM GIẤY TỜ CẦN TÌM HIỂU
           </h2>
-          <p className="text-sm text-[#43474f] mt-1">
-            Tham khảo 4 nhóm giấy tờ căn bản dưới đây và tích chọn các mục bạn đã chuẩn bị để kiểm tra độ hoàn thiện.
+          <p className="text-sm text-[#43474f] mt-1 max-w-3xl leading-relaxed">
+            Danh sách giấy tờ dưới đây mang tính chất tham khảo. Yêu cầu thực tế có thể thay đổi tùy mục đích chuyến đi và hướng dẫn của cơ quan có thẩm quyền.
           </p>
         </div>
 
@@ -58,7 +58,7 @@ export const DocumentChecklist: React.FC<DocumentChecklistProps> = ({ onGetCheck
           <div className="flex items-center justify-between text-xs font-bold">
             <span className="text-[#001f41] flex items-center gap-1.5">
               <FileCheck className="w-4 h-4 text-[#0051d5]" />
-              Tiến độ sẵn sàng:
+              Tiến độ tìm hiểu:
             </span>
             <span className="text-[#0051d5] tabular-nums font-black">{percentage}% ({readyCount}/{totalItems} mục)</span>
           </div>
@@ -72,7 +72,7 @@ export const DocumentChecklist: React.FC<DocumentChecklistProps> = ({ onGetCheck
 
           <div className="flex items-center justify-between pt-1">
             <span className="text-[11px] text-[#747780]">
-              {percentage >= 80 ? 'Hồ sơ rất đầy đủ!' : 'Visa5S hỗ trợ hoàn thiện các mục còn lại'}
+              {percentage >= 80 ? 'Bạn đã chuẩn bị khá chi tiết' : 'Visa5S hỗ trợ tư vấn các mục còn lại'}
             </span>
             <button
               onClick={copyChecklistText}
@@ -138,7 +138,7 @@ export const DocumentChecklist: React.FC<DocumentChecklistProps> = ({ onGetCheck
                           </span>
                           {item.notes && (
                             <span className="text-[10px] text-[#0051d5] font-medium mt-1 bg-[#eaedff]/60 px-2 py-0.5 rounded self-start">
-                              Tip: {item.notes}
+                              Gợi ý: {item.notes}
                             </span>
                           )}
                         </div>
@@ -157,7 +157,7 @@ export const DocumentChecklist: React.FC<DocumentChecklistProps> = ({ onGetCheck
         <div className="flex items-start gap-2.5">
           <AlertCircle className="w-5 h-5 text-[#6f0006] shrink-0 mt-0.5" />
           <p className="text-xs text-[#43474f] leading-relaxed">
-            <strong className="text-[#001f41]">Lưu ý:</strong> Danh sách trên mang tính tham khảo tổng hợp. Hồ sơ thực tế phụ thuộc vào diện thị thực, hoàn cảnh người nộp và quy định hiện hành của cơ quan ngoại giao.
+            <strong className="text-[#001f41]">Lưu ý quan trọng:</strong> Danh sách trên chỉ mang tính chất tham khảo chung, không phải là danh sách đầy đủ hoặc bắt buộc cho mọi trường hợp. Cơ quan có thẩm quyền có quyền yêu cầu thêm hoặc giảm bớt giấy tờ tùy theo từng hồ sơ thực tế.
           </p>
         </div>
 
@@ -166,7 +166,7 @@ export const DocumentChecklist: React.FC<DocumentChecklistProps> = ({ onGetCheck
           className="w-full sm:w-auto px-5 py-3 rounded-xl bg-[#0051d5] text-white text-xs font-bold whitespace-nowrap shadow-sm hover:bg-[#003ea8] transition-all flex items-center justify-center gap-1.5 shrink-0"
         >
           <Sparkles className="w-4 h-4" />
-          <span>NHẬN CHECKLIST HỒ SƠ PHÙ HỢP</span>
+          <span>NHẬN THÔNG TIN TƯ VẤN HỒ SƠ</span>
         </button>
       </div>
     </section>

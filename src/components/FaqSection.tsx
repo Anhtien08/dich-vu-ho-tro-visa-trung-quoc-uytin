@@ -3,11 +3,11 @@ import { FAQS } from '../data/visaData';
 import { ChevronDown, Search, HelpCircle } from 'lucide-react';
 
 export const FaqSection: React.FC = () => {
-  const [openIds, setOpenIds] = useState<number[]>([1]); // First FAQ opened by default
+  const [openIds, setOpenIds] = useState<number[]>([1, 2]); // Open first 2 FAQs by default
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<string>('Tất cả');
 
-  const categories = ['Tất cả', 'Thủ tục', 'Thời gian', 'Chi phí', 'Tự nộp', 'Hồ sơ', 'Pháp lý'];
+  const categories = ['Tất cả', 'Pháp lý', 'Cam kết', 'Chi phí', 'Tự nộp', 'Hồ sơ', 'Xét duyệt'];
 
   const toggleFaq = (id: number) => {
     setOpenIds((prev) =>
@@ -35,7 +35,7 @@ export const FaqSection: React.FC = () => {
             CÂU HỎI THƯỜNG GẶP
           </h2>
           <p className="text-sm text-[#43474f] mt-1">
-            Tổng hợp các thắc mắc phổ biến của khách hàng khi chuẩn bị hồ sơ thị thực Trung Quốc.
+            Thông tin minh bạch giải đáp các thắc mắc phổ biến về vai trò của Visa5S và thủ tục tìm hiểu hồ sơ visa Trung Quốc.
           </p>
         </div>
 
